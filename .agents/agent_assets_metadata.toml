@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "_Me7dFYKR0ugDPpmmV8Xk"
+uri = "file://GUIDE.txt"
+type = "text"
+title = "Руководство пользователя — Аксай Гриль"
