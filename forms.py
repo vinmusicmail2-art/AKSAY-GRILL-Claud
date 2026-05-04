@@ -65,6 +65,35 @@ class SetupForm(FlaskForm):
     submit = SubmitField("Создать администратора")
 
 
+class AddAdminForm(FlaskForm):
+    username = StringField(
+        "Логин",
+        validators=[
+            DataRequired(message="Введите логин"),
+            Length(min=3, max=64, message="От 3 до 64 символов"),
+            Regexp(
+                r"^[A-Za-z0-9А-Яа-яЁё_.-]+$",
+                message="Только буквы, цифры и _.-",
+            ),
+        ],
+    )
+    password = PasswordField(
+        "Пароль",
+        validators=[
+            DataRequired(message="Введите пароль"),
+            Length(min=8, max=128, message="Минимум 8 символов"),
+        ],
+    )
+    password_confirm = PasswordField(
+        "Повторите пароль",
+        validators=[
+            DataRequired(message="Повторите пароль"),
+            EqualTo("password", message="Пароли не совпадают"),
+        ],
+    )
+    submit = SubmitField("Добавить администратора")
+
+
 class BusinessLunchOrderForm(FlaskForm):
     """Заявка на корпоративные бизнес-ланчи."""
 

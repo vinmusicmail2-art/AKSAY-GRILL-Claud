@@ -1864,3 +1864,92 @@ def admin_stats_export():
         return _csv_response(f"statistika_adminov_{ts}.csv", rows)
     finally:
         session.close()
+
+
+@app.route("/admin/admins")
+@login_required
+def admin_admins():
+    from forms import AddAdminForm
+    from models import Admin
+
+    session = SessionLocal()
+    try:
+        admins = session.query(Admin).order_by(Admin.created_at).all()
+        form = AddAdminForm()
+        return render_template("admin/admins.html", admins=admins, form=form)
+    finally:
+        session.close()
+
+
+@app.route("/admin/admins/add", methods=["POST"])
+@login_required
+def admin_admins_add():
+    from forms import AddAdminForm
+    from models import Admin
+
+    form = AddAdminForm()
+    session = SessionLocal()
+    try:
+        if form.validate_on_submit():
+            username = form.username.data.strip()
+            existing = session.query(Admin).filter(Admin.username == username).first()
+            if existing:
+                flash(f"Администратор с логином «{username}» уже существует.", "error")
+            else:
+                admin = Admin(username=username)
+                admin.set_password(form.password.data)
+                session.add(admin)
+                session.commit()
+                flash(f"Администратор «{username}» успешно добавлен.", "success")
+            return redirect(url_for("admin_admins"))
+
+        admins = session.query(Admin).order_by(Admin.created_at).all()
+        return render_template("admin/admins.html", admins=admins, form=form)
+    finally:
+        session.close()
+
+
+@app.route("/admin/admins/<int:admin_id>/toggle", methods=["POST"])
+@login_required
+def admin_admins_toggle(admin_id: int):
+    from models import Admin
+
+    if admin_id == current_user.id:
+        flash("Нельзя отключить собственную учётную запись.", "error")
+        return redirect(url_for("admin_admins"))
+
+    session = SessionLocal()
+    try:
+        admin = session.query(Admin).filter(Admin.id == admin_id).first()
+        if not admin:
+            abort(404)
+        admin.is_active = not admin.is_active
+        session.commit()
+        state = "активирован" if admin.is_active else "отключён"
+        flash(f"Администратор «{admin.username}» {state}.", "success")
+        return redirect(url_for("admin_admins"))
+    finally:
+        session.close()
+
+
+@app.route("/admin/admins/<int:admin_id>/delete", methods=["POST"])
+@login_required
+def admin_admins_delete(admin_id: int):
+    from models import Admin
+
+    if admin_id == current_user.id:
+        flash("Нельзя удалить собственную учётную запись.", "error")
+        return redirect(url_for("admin_admins"))
+
+    session = SessionLocal()
+    try:
+        admin = session.query(Admin).filter(Admin.id == admin_id).first()
+        if not admin:
+            abort(404)
+        username = admin.username
+        session.delete(admin)
+        session.commit()
+        flash(f"Администратор «{username}» удалён.", "success")
+        return redirect(url_for("admin_admins"))
+    finally:
+        session.close()
