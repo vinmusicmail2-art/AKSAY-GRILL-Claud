@@ -321,34 +321,30 @@
 <section id="dostavka" class="mb-16 scroll-mt-32 rounded-2xl overflow-hidden border border-outline-variant/10 shadow-lg">
 
   <!-- ── Part 1: Hero Banner ── -->
-  <div class="relative overflow-hidden" style="min-height:280px;">
-    <img alt="Курьер Аксай Гриль" class="w-full h-full object-cover absolute inset-0" style="min-height:280px;" src="/assets/delivery-hero.png"/>
-    <div class="absolute inset-0" style="background:linear-gradient(to right, rgba(155,63,28,1) 0%, rgba(155,63,28,1) 62%, rgba(155,63,28,0.6) 80%, rgba(155,63,28,0.15) 100%);"></div>
-    <div class="relative z-10 px-10 md:px-14 py-12 flex flex-col justify-center" style="min-height:280px;">
-      <h2 class="font-headline text-4xl md:text-5xl mb-3 font-bold" style="color:#FEF9EF; font-family:'Yanone Kaffeesatz',sans-serif;">Доставим горячим</h2>
-      <p class="text-lg font-light leading-relaxed mb-6" style="color:#FDC39A; max-width:520px;">Привезём ваш заказ в любую точку города. При заказе от 1500 ₽ — доставка бесплатная.</p>
-      <div class="flex flex-wrap gap-5 mb-6">
-        <div class="flex items-center gap-2">
-          <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background-color:rgba(253,195,154,0.25); border:1px solid rgba(253,195,154,0.5);">
-            <span class="material-symbols-outlined text-lg" style="color:#FDC39A;">speed</span>
-          </div>
-          <span class="font-semibold text-sm" style="color:#FEF9EF;">Быстро</span>
+  <div class="px-10 md:px-14 py-12 flex flex-col items-center text-center" style="background-color:#9B3F1C;">
+    <h2 class="font-headline text-4xl md:text-5xl mb-3 font-bold" style="color:#FEF9EF; font-family:'Yanone Kaffeesatz',sans-serif;">Доставим горячим</h2>
+    <p class="text-lg font-light leading-relaxed mb-6" style="color:#FDC39A; max-width:600px;">Привезём ваш заказ в любую точку города. При заказе от 1500 ₽ — доставка бесплатная.</p>
+    <div class="flex flex-wrap justify-center gap-6 mb-6">
+      <div class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background-color:rgba(253,195,154,0.25); border:1px solid rgba(253,195,154,0.5);">
+          <span class="material-symbols-outlined text-lg" style="color:#FDC39A;">speed</span>
         </div>
-        <div class="flex items-center gap-2">
-          <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background-color:rgba(253,195,154,0.25); border:1px solid rgba(253,195,154,0.5);">
-            <span class="material-symbols-outlined text-lg" style="color:#FDC39A;">takeout_dining</span>
-          </div>
-          <span class="font-semibold text-sm" style="color:#FEF9EF;">Термо-боксы</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background-color:rgba(253,195,154,0.25); border:1px solid rgba(253,195,154,0.5);">
-            <span class="material-symbols-outlined text-lg" style="color:#FDC39A;">payments</span>
-          </div>
-          <span class="font-semibold text-sm" style="color:#FEF9EF;">Оплата картой</span>
-        </div>
+        <span class="font-semibold text-sm" style="color:#FEF9EF;">Быстро</span>
       </div>
-      <button onclick="document.getElementById('quick-request-modal').classList.remove('hidden')" type="button" class="w-fit px-7 py-3 rounded-lg font-medium hover:opacity-90 transition-all text-sm" style="background-color:#FDC39A; color:#56423A;">Оставить заявку</button>
+      <div class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background-color:rgba(253,195,154,0.25); border:1px solid rgba(253,195,154,0.5);">
+          <span class="material-symbols-outlined text-lg" style="color:#FDC39A;">takeout_dining</span>
+        </div>
+        <span class="font-semibold text-sm" style="color:#FEF9EF;">Термо-боксы</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background-color:rgba(253,195,154,0.25); border:1px solid rgba(253,195,154,0.5);">
+          <span class="material-symbols-outlined text-lg" style="color:#FDC39A;">payments</span>
+        </div>
+        <span class="font-semibold text-sm" style="color:#FEF9EF;">Оплата картой</span>
+      </div>
     </div>
+    <button onclick="document.getElementById('quick-request-modal').classList.remove('hidden')" type="button" class="px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-all text-sm" style="background-color:#FDC39A; color:#56423A;">Оставить заявку</button>
   </div>
 
   <!-- ── Part 2: О доставке ── -->
