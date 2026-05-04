@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест шрифтов - Аксай Гриль</title>
+    <link rel="stylesheet" href="/assets/css/fonts.css">
+    <style>
+        body {
+            margin: 40px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .font-name {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .sample {
+            margin: 15px 0;
+            padding: 10px;
+            background: #fafafa;
+            border-left: 4px solid #e74c3c;
+        }
+        .weight-label {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        /* Montserrat tests */
+        .montserrat-100 { font-family: 'Montserrat', sans-serif; font-weight: 100; }
+        .montserrat-200 { font-family: 'Montserrat', sans-serif; font-weight: 200; }
+        .montserrat-400 { font-family: 'Montserrat', sans-serif; font-weight: 400; }
+        .montserrat-500 { font-family: 'Montserrat', sans-serif; font-weight: 500; }
+        .montserrat-700 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+
+        /* Yanone Kaffeesatz tests */
+        .yanone-200 { font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: 200; }
+        .yanone-300 { font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: 300; }
+        .yanone-400 { font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: 400; }
+        .yanone-500 { font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: 500; }
+        .yanone-600 { font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: 600; }
+        .yanone-700 { font-family: 'Yanone Kaffeesatz', sans-serif; font-weight: 700; }
+
+        /* Great Vibes test */
+        .great-vibes { font-family: 'Great Vibes', cursive; font-weight: 400; font-size: 32px; }
+
+        /* Material Symbols test */
+        .material-symbols-outlined {
+            font-size: 48px;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-section">
+        <h1>Тест шрифтов сайта Аксай Гриль</h1>
+        <p class="font-name">Проверка загрузки всех шрифтов из /assets/fonts/</p>
+    </div>
+
+    <div class="test-section">
+        <h1>Montserrat (основной шрифт)</h1>
+        <p class="font-name">font-family: 'Montserrat', sans-serif</p>
+
+        <div class="sample">
+            <div class="weight-label">Weight 100 (Thin)</div>
+            <p class="montserrat-100">Аксай Гриль - вкусная еда с доставкой! ABCDEFG 0123456789</p>
+        </div>
+
+        <div class="sample">
+            <div class="weight-label">Weight 200 (Extra Light)</div>
+            <p class="montserrat-200">Аксай Гриль - вкусная еда с доставкой! ABCDEFG 0123456789</p>
+        </div>
+
+        <div class="sample">
+            <div class="weight-label">Weight 400 (Regular) - основной текст</div>
+            <p class="montserrat-400">Аксай Гриль - вкусная еда с доставкой! ABCDEFG 0123456789</p>
+        </div>
+
+        <div class="sample">
+            <div class="weight-label">Weight 500 (Medium)</div>
+            <p class="montserrat-500">Аксай Гриль - вкусная еда с доставкой! ABCDEFG 0123456789</p>
+        </div>
+
+        <div class="sample">
+            <div class="weight-label">Weight 700 (Bold) - заголовки</div>
+            <p class="montserrat-700">Аксай Гриль - вкусная еда с доставкой! ABCDEFG 0123456789</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h1>Yanone Kaffeesatz (декоративный шрифт)</h1>
+        <p class="font-name">font-family: 'Yanone Kaffeesatz', sans-serif</p>
+
+        <div class="sample">
+            <div class="weight-label">Weight 200</div>
+            <p class="yanone-200" style="font-size: 24px;">Аксай Гриль - вкусная еда с доставкой!</p>
+        </div>
+
+        <div class="sample">
+            <div class="weight-label">Weight 300</div>
+            <p class="yanone-300" style="font-size: 24px;">Аксай Гриль - вкусная еда с доставкой!</p>
+        </div>
+
+        <div class="sample">
+            <div class="weight-label">Weight 400</div>
+            <p class="yanone-400" style="font-size: 24px;">Аксай Гриль - вкусная еда с доставкой!</p>
+        </div>
+
+        <div class="sample">
+            <div class="weight-label">Weight 500</div>
+            <p class="yanone-500" style="font-size: 24px;">Аксай Гриль - вкусная еда с доставкой!</p>
+        </div>
+
+        <div class="sample">
+            <div class="weight-label">Weight 600</div>
+            <p class="yanone-600" style="font-size: 24px;">Аксай Гриль - вкусная еда с доставкой!</p>
+        </div>
+
+        <div class="sample">
+            <div class="weight-label">Weight 700</div>
+            <p class="yanone-700" style="font-size: 24px;">Аксай Гриль - вкусная еда с доставкой!</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h1>Great Vibes (курсивный декоративный)</h1>
+        <p class="font-name">font-family: 'Great Vibes', cursive</p>
+
+        <div class="sample">
+            <p class="great-vibes">Аксай Гриль</p>
+            <p class="great-vibes">Welcome to Aksay Grill</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h1>Material Symbols Outlined (иконки)</h1>
+        <p class="font-name">font-family: 'Material Symbols Outlined'</p>
+
+        <div class="sample">
+            <span class="material-symbols-outlined">restaurant</span>
+            <span class="material-symbols-outlined">delivery_dining</span>
+            <span class="material-symbols-outlined">outdoor_grill</span>
+            <span class="material-symbols-outlined">celebration</span>
+            <span class="material-symbols-outlined">phone</span>
+            <span class="material-symbols-outlined">location_on</span>
+            <span class="material-symbols-outlined">schedule</span>
+            <span class="material-symbols-outlined">shopping_cart</span>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h1>Инструкция по проверке</h1>
+        <ol>
+            <li>Откройте DevTools (F12) → вкладка Network</li>
+            <li>Перезагрузите страницу (Ctrl+R)</li>
+            <li>Отфильтруйте по "font" или ".woff2"</li>
+            <li>Проверьте, что все 18 файлов шрифтов загрузились со статусом 200</li>
+            <li>Если какие-то шрифты показывают 404 - проблема в путях или отсутствии файлов</li>
+        </ol>
+        <p><strong>Ожидаемые файлы:</strong></p>
+        <ul>
+            <li>montserrat-cyrillic-100/200/400/500/700-normal.woff2 (5 файлов)</li>
+            <li>montserrat-latin-100/200/400/500/700-normal.woff2 (5 файлов)</li>
+            <li>yanone-kaffeesatz-latin-200/300/400/500/600/700-normal.woff2 (6 файлов)</li>
+            <li>great-vibes-latin-400-normal.woff2 (1 файл)</li>
+            <li>material-symbols-outlined.woff2 (1 файл)</li>
+        </ul>
+        <p><strong>Итого: 18 файлов шрифтов</strong></p>
+    </div>
+</body>
+</html>
