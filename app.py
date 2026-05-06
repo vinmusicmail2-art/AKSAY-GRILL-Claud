@@ -48,60 +48,70 @@ login_manager.login_message = "Сначала войдите в админку."
 login_manager.login_message_category = "warning"
 
 
-def init_db() -> None:
-    """Создать таблицы, применить inline-миграции ALTER TABLE и засеять начальные данные.
+def _get_table_columns(conn, table_name: str) -> set:
+    """Return the set of column names for a table, compatible with SQLite and PostgreSQL."""
+    from sqlalchemy import text
+    dialect = conn.dialect.name
+    if dialect == "sqlite":
+        rows = conn.execute(text(f"PRAGMA table_info({table_name})")).fetchall()
+        return {row[1] for row in rows}
+    else:
+        result = conn.execute(text(
+            "SELECT column_name FROM information_schema.columns "
+            "WHERE table_name = :tbl"
+        ), {"tbl": table_name}).fetchall()
+        return {row[0] for row in result}
 
-    Вызывается один раз при старте приложения внутри ``app.app_context()``.
-    SQLite-specific PRAGMA-миграции выполняются вручную, т.к. Alembic не используется.
-    """
+
+def _safe_add_column(conn, table: str, col: str, definition: str) -> None:
+    """Add a column to a table if it doesn't already exist."""
+    from sqlalchemy import text
+    cols = _get_table_columns(conn, table)
+    if col not in cols:
+        try:
+            conn.execute(text(f"ALTER TABLE {table} ADD COLUMN {col} {definition}"))
+        except Exception as exc:
+            logging.getLogger(__name__).warning(
+                "ALTER TABLE %s ADD COLUMN %s skipped: %s", table, col, exc)
+
+
+def init_db() -> None:
+    """Создать таблицы, применить inline-миграции ALTER TABLE и засеять начальные данные."""
     import models  # noqa: F401
 
     Base.metadata.create_all(bind=engine, checkfirst=True)
 
     with engine.begin() as conn:
         try:
-            cols = {row[1] for row in conn.exec_driver_sql(
-                "PRAGMA table_info(business_lunch_orders)").fetchall()}
             for col, definition in (
-                ("is_processed", "BOOLEAN NOT NULL DEFAULT 0"),
-                ("processed_at",  "DATETIME"),
+                ("is_processed", "BOOLEAN NOT NULL DEFAULT FALSE"),
+                ("processed_at",  "TIMESTAMP"),
                 ("processed_by",  "VARCHAR(64)"),
             ):
-                if col not in cols:
-                    conn.exec_driver_sql(
-                        f"ALTER TABLE business_lunch_orders ADD COLUMN {col} {definition}")
+                _safe_add_column(conn, "business_lunch_orders", col, definition)
         except Exception as exc:
             logging.getLogger(__name__).warning(
                 "business_lunch_orders migration skipped: %s", exc)
 
         try:
-            cols = {row[1] for row in conn.exec_driver_sql(
-                "PRAGMA table_info(menu_categories)").fetchall()}
-            if cols:
+            if _get_table_columns(conn, "menu_categories"):
                 for col, definition in (
-                    ("show_in_nav", "BOOLEAN NOT NULL DEFAULT 1"),
+                    ("show_in_nav", "BOOLEAN NOT NULL DEFAULT TRUE"),
                     ("description", "TEXT NOT NULL DEFAULT ''"),
                 ):
-                    if col not in cols:
-                        conn.exec_driver_sql(
-                            f"ALTER TABLE menu_categories ADD COLUMN {col} {definition}")
+                    _safe_add_column(conn, "menu_categories", col, definition)
         except Exception as exc:
             logging.getLogger(__name__).warning(
                 "menu_categories migration skipped: %s", exc)
 
-    with engine.begin() as conn:
         try:
-            cols = {row[1] for row in conn.exec_driver_sql(
-                "PRAGMA table_info(quick_requests)").fetchall()}
-            if cols:
+            if _get_table_columns(conn, "quick_requests"):
                 for col, definition in (
-                    ("is_processed", "BOOLEAN NOT NULL DEFAULT 0"),
-                    ("processed_at",  "DATETIME"),
+                    ("is_processed", "BOOLEAN NOT NULL DEFAULT FALSE"),
+                    ("processed_at",  "TIMESTAMP"),
                     ("processed_by",  "VARCHAR(64)"),
                 ):
-                    if col not in cols:
-                        conn.exec_driver_sql(
-                            f"ALTER TABLE quick_requests ADD COLUMN {col} {definition}")
+                    _safe_add_column(conn, "quick_requests", col, definition)
         except Exception as exc:
             logging.getLogger(__name__).warning(
                 "quick_requests migration skipped: %s", exc)
