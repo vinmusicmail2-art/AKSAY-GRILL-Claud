@@ -141,14 +141,14 @@
       #dostavka .text-xs { font-size: 0.863rem !important; }
     </style>
 </head>
-<body class="bg-background text-on-surface font-body antialiased" data-mode="connect" style="zoom:0.95;">
+<body class="bg-background text-on-surface font-body antialiased" data-mode="connect">
 <!-- Top Navigation Shell -->
 <header class="fixed top-0 left-0 w-full z-50 bg-[#e1ddd5] dark:bg-[#1a1614] backdrop-blur-md shadow-sm shadow-[#56423a]/5 border-none">
 <div class="relative flex justify-end items-center gap-6 pl-8 pr-4 py-6 w-full max-w-[1440px] mx-auto" style="padding-right: 0.5rem;">
 <!-- Contact strip (широкие экраны ≥1536px) — в одной строке с навигацией;
      position:absolute + inset-y-0 + items-center => вертикально по центру.
      НЕ влияет на высоту шапки и ничего не сдвигает -->
-<div class="hidden 2xl:flex flex-col absolute inset-y-0 items-center justify-center text-[26px] whitespace-nowrap text-[#56423a] z-[1] pointer-events-none" style="left: 230px; right: 700px; transform: translateY(-15px);">
+<div class="hidden 2xl:flex flex-col absolute inset-y-0 items-center justify-center text-[26px] whitespace-nowrap text-[#56423a] z-[1] pointer-events-none" style="left: calc(720px - 25vw); right: 46%; transform: translateY(-15px);">
 <div class="flex items-center justify-center gap-x-4">
 <a href="#map"
    class="flex items-center gap-1.5 pointer-events-auto hover:text-[#9b3f1c] transition-colors">
@@ -166,7 +166,7 @@
 <span class="font-semibold">{{ texts.contact_hours }}</span>
 </span>
 </div>
-<a href="https://yandex.ru/maps/?ll={{ texts.map_lng }}%2C{{ texts.map_lat }}&z={{ texts.map_zoom }}&pt={{ texts.map_lng }}%2C{{ texts.map_lat }}%2Cpm2rdm" target="_blank" rel="noopener" class="font-semibold text-[#56423a] text-center pointer-events-auto hover:text-[#9b3f1c] hover:scale-105 transition-all duration-200 inline-block" style="font-size: 15px; margin-left: -45px;">г. Аксай, Улица Авиаторов, зд.16, стр. 32</a>
+<a href="https://yandex.ru/maps/?ll={{ texts.map_lng }}%2C{{ texts.map_lat }}&z={{ texts.map_zoom }}&pt={{ texts.map_lng }}%2C{{ texts.map_lat }}%2Cpm2rdm" target="_blank" rel="noopener" class="font-semibold text-[#56423a] text-center pointer-events-auto hover:text-[#9b3f1c] hover:scale-105 transition-all duration-200 inline-block" style="font-size: 15px;">г. Аксай, Улица Авиаторов, зд.16, стр. 32</a>
 </div>
 <nav class="hidden md:flex items-center gap-6 text-sm tracking-wide font-medium">
 <a class="inline-block text-[#56423a] opacity-80 hover:text-[#9b3f1c] hover:scale-110 transition-all duration-300" style="text-shadow: 0 0 6px rgba(255,255,255,0.7), 0 0 2px rgba(255,255,255,0.9);" href="#dostavka">Доставка</a>
@@ -177,11 +177,11 @@
 <a class="inline-block text-[#56423a] opacity-80 hover:text-[#9b3f1c] hover:scale-110 transition-all duration-300" style="text-shadow: 0 0 6px rgba(255,255,255,0.7), 0 0 2px rgba(255,255,255,0.9);" href="/about">О нас</a>
 </nav>
 <div class="flex items-center gap-4">
-<div class="hidden lg:flex items-center bg-[#e3dfd6] px-4 py-2 rounded-full border border-outline-variant/15" style="transform: translateX(-15px) scale(0.85); transform-origin: right center;">
+<div class="hidden lg:flex items-center bg-[#e3dfd6] px-3 py-1.5 rounded-full border border-outline-variant/15">
 <span class="material-symbols-outlined text-on-surface-variant text-sm mr-2">search</span>
 <input id="dish-search" class="bg-transparent border-none focus:ring-0 text-sm w-40 p-0 text-on-surface-variant font-body" placeholder="Поиск блюд..." type="text"/>
 </div>
-<button onclick="openCart()" style="transform: translateX(-15px) scale(0.85); transform-origin: right center;" class="bg-primary text-on-primary px-4 md:px-5 py-2.5 rounded-lg font-medium hover:opacity-90 hover:scale-105 scale-95 active:opacity-80 transition-all duration-300 text-sm md:text-base flex items-center gap-2">
+<button onclick="openCart()" class="bg-primary text-on-primary px-4 md:px-5 py-2 rounded-lg font-medium hover:opacity-90 hover:scale-105 active:opacity-80 transition-all duration-300 text-sm flex items-center gap-2">
 <span class="material-symbols-outlined text-xl leading-none">shopping_basket</span>
 <span id="cart-header-summary">Заказать</span>
 </button>
@@ -217,7 +217,7 @@
 </nav>
 </div>
 <!-- Contact strip (средние экраны md..xl) — позиционирована относительно header (full-width) -->
-<div class="hidden md:flex 2xl:hidden flex-col absolute items-center justify-center text-[24px] whitespace-nowrap text-[#56423a] z-[1] pointer-events-none bg-[#e1ddd5] dark:bg-[#1a1614] rounded-l-lg shadow-sm shadow-[#56423a]/10" style="left: 370px; right: 0; top: calc(100% - 15px); padding: 4px 16px 6px;">
+<div class="hidden md:flex 2xl:hidden flex-col absolute items-center justify-center text-[24px] whitespace-nowrap text-[#56423a] z-[1] pointer-events-none bg-[#e1ddd5] dark:bg-[#1a1614] rounded-l-lg shadow-sm shadow-[#56423a]/10" style="left: 25%; right: 0; top: calc(100% - 15px); padding: 4px 16px 6px;">
 <div class="flex items-center justify-center gap-x-4">
 <a href="#map" class="flex items-center gap-1 pointer-events-auto hover:text-[#9b3f1c] transition-colors">
 <span class="material-symbols-outlined text-[30px] text-[#9b3f1c]">location_on</span>
